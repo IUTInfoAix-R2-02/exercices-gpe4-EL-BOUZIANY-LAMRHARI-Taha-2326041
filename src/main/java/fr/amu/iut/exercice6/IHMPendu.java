@@ -62,7 +62,7 @@ public class IHMPendu extends Application {
 
 
         this.send = new Button("send");
-        this.guess = new TextField("I fw vro");
+        this.guess = new TextField("I fw vro ");
 
         this.hbox = new HBox();
         this.vbox = new VBox();
