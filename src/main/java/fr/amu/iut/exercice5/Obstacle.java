@@ -18,4 +18,11 @@ public class Obstacle extends Rectangle {
         */
 
     }
+    boolean murCollision(Personnage autrePersonnage) {
+        return getBoundsInParent().contains(autrePersonnage.getBoundsInParent())
+                || autrePersonnage.getBoundsInParent().contains(getBoundsInParent());
+    }
+
+
+
 }

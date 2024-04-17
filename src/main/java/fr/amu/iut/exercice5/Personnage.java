@@ -10,6 +10,9 @@ class Personnage extends Group {
     private final Circle corps;
     private String direction;
 
+    double posx;
+    double posy;
+
     public Personnage(String direction, Color couleurContour, Color couleurRemplissage) {
         this.direction = direction;
         corps = new Circle(10, 10, LARGEUR_MOITIE_PERSONNAGE, couleurContour);
@@ -17,12 +20,23 @@ class Personnage extends Group {
         getChildren().add(corps);
     }
 
+    double getPosx(){
+        return posx;
+    }
+    double getPosy(){
+        return posy;
+    }
+
+
     public void deplacerAGauche() {
         //    ****
         //   *    *
         //  *---   *
         //   *    *
         //    ****
+
+        posx = getLayoutX();
+        posy = getLayoutY();
 
         //déplacement <----
         if (getLayoutX() >= LARGEUR_PERSONNAGE) {
@@ -33,12 +47,17 @@ class Personnage extends Group {
         }
     }
 
+
+
     public void deplacerADroite(double largeurJeu) {
         //    ****
         //   *    *
         //  *   ---*
         //   *    *
         //    ****
+
+        posx = getLayoutX();
+        posy = getLayoutY();
         //déplacement ---->
         if (getLayoutX() < largeurJeu - LARGEUR_PERSONNAGE) {
             setLayoutX(getLayoutX() + LARGEUR_PERSONNAGE);
@@ -54,6 +73,9 @@ class Personnage extends Group {
         //  *   |   *
         //   *  |  *
         //    *****
+
+        posx = getLayoutX();
+        posy = getLayoutY();
         if (getLayoutY() < hauteurJeu - LARGEUR_PERSONNAGE) {
             setLayoutY(getLayoutY() + LARGEUR_PERSONNAGE);
         }
@@ -69,6 +91,9 @@ class Personnage extends Group {
         //  *   |   *
         //   *     *
         //    *****
+
+        posx = getLayoutX();
+        posy = getLayoutY();
         if (getLayoutY() >= LARGEUR_PERSONNAGE) {
             setLayoutY(getLayoutY() - LARGEUR_PERSONNAGE);
         }
@@ -80,11 +105,6 @@ class Personnage extends Group {
     boolean estEnCollision(Personnage autrePersonnage) {
         return getBoundsInParent().contains(autrePersonnage.getBoundsInParent())
                 || autrePersonnage.getBoundsInParent().contains(getBoundsInParent());
-    }
-
-    boolean murCollision(Obstacle mur) {
-        return getBoundsInParent().contains(mur.getBoundsInParent())
-                || mur.getBoundsInParent().contains(getBoundsInParent());
     }
 
 }
