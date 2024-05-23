@@ -1,6 +1,7 @@
 package fr.amu.iut.exercice6;
 
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -104,6 +105,8 @@ public class IHMPendu extends Application {
                 clavier,
                 send
         );
+
+
 
         VBox.setMargin(clavier, new Insets(0,10,0,10));
         VBox.setMargin( guess, new Insets(0,80,0,80));
